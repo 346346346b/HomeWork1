@@ -2,7 +2,6 @@ package dao;
 
 import liquibase.util.csv.CSVReader;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
@@ -17,7 +16,6 @@ public class ReadQuestionsCSV implements ReadQuestions {
             String[] nextLine;
             while ((nextLine = reader.readNext()) != null) {
                 if (nextLine != null) {
-                    System.out.println(Arrays.toString(nextLine));
                     String[] string = Arrays.toString(nextLine).substring(1).replaceAll("]", "").split(";");
                     questionAndAnswer.put(string[0], string[1]);
                 }

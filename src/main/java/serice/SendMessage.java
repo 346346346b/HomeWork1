@@ -1,7 +1,5 @@
 package serice;
 
 public interface SendMessage {
-    public static void sendMessage(String textMessage) {
-
-    }
+    public void sendMessage(String textMessage);
 }

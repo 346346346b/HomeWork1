@@ -1,11 +1,14 @@
 package serice;
 
 import dao.ReadQuestions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.Map;
 import java.util.Scanner;
 
+@Component
 public class Quiz  {
     private final ReadQuestions quizRead;
     private final SendMessage quizSend;
@@ -14,6 +17,7 @@ public class Quiz  {
     private String questionText;
     private String answerText;
 
+    @Autowired
     public Quiz(ReadQuestions quizRead, SendMessage quizSend, AskQuestion quizAskQuestion) {
         this.quizRead = quizRead;
         this.quizSend = quizSend;

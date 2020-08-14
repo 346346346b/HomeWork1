@@ -8,14 +8,14 @@ import java.util.TreeMap;
 
 public class Quiz {
 
-    private final InformationStreamService inf;
-    private final QuestionDao dao;
-    private final QuestionService question;
+    private final InformationStreamService infoStream;
+    private final QuestionDao questionDao;
+    private final QuestionService askQuestion;
 
-    public Quiz(InformationStreamService inf, QuestionDao dao, QuestionService question) {
-        this.inf = inf;
-        this.dao = dao;
-        this.question = question;
+    public Quiz(InformationStreamService infoStream, QuestionDao questionDao, QuestionService askQuestion) {
+        this.infoStream = infoStream;
+        this.questionDao = questionDao;
+        this.askQuestion = askQuestion;
     }
 
     public void startQuiz() throws IOException {
@@ -23,24 +23,24 @@ public class Quiz {
         String questionText;
         String answerText;
 
-        inf.output("Введите имя");
-        String firstName = inf.input();
-        inf.output("Введите фамилию");
-        String secondName = inf.input();
+        infoStream.output("Введите имя");
+        String firstName = infoStream.input();
+        infoStream.output("Введите фамилию");
+        String secondName = infoStream.input();
 
-        TreeMap<String,String> questionAndAnswer = dao.readQuestions();
+        TreeMap<String,String> questionAndAnswer = questionDao.readQuestions();
         int i = 1;
         int trueAnswer = 0;
         for (Map.Entry<String, String> e : questionAndAnswer.entrySet()) {
             questionText = e.getKey();
             answerText = e.getValue();
 
-            inf.output("");
-            inf.output("Вопрос номер: " + i);
-            trueAnswer = trueAnswer + question.askQuestion(questionText, answerText);
+            infoStream.output("");
+            infoStream.output("Вопрос номер: " + i);
+            trueAnswer = trueAnswer + askQuestion.askQuestion(questionText, answerText);
             i++;
         }
-        inf.output(firstName + " " + secondName + " тест окончен. Правильных ответов " + trueAnswer + " из " + questionAndAnswer.size());
+        infoStream.output(firstName + " " + secondName + " тест окончен. Правильных ответов " + trueAnswer + " из " + questionAndAnswer.size());
     }
 
 }

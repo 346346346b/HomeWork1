@@ -1,11 +1,11 @@
-package serice;
+package service;
 
 import java.util.Scanner;
 
-public class AskQuestionImplementation implements AskQuestion {
-    private final SendMessageToConsole sendMes;
+public class AskQuestionImpl implements AskQuestion {
+    private final SendMessage sendMes;
 
-    public AskQuestionImplementation(SendMessageToConsole sendMes) {
+    public AskQuestionImpl(SendMessage sendMes) {
         this.sendMes = sendMes;
     }
 
@@ -18,7 +18,7 @@ public class AskQuestionImplementation implements AskQuestion {
             return 1;
         }
         else {
-            sendMes.sendMessage("Ответ не верный");
+            sendMes.sendMessage("Ответ не верный. " + " Верный ответ" +  answer);
             return 0;
         }
     }

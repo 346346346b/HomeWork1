@@ -1,6 +1,6 @@
-package serice;
+package service;
 
-public class SendMessageToConsole implements SendMessage{
+public class SendMessageConsole implements SendMessage{
     @Override
     public void sendMessage(String textMessage) {
         System.out.println(textMessage);

@@ -1,8 +1,8 @@
 package dao;
 
 import java.io.IOException;
-import java.util.Map;
+import java.util.TreeMap;
 
 public interface ReadQuestions {
-    Map readQuestions() throws IOException;
+    TreeMap readQuestions() throws IOException;
 }

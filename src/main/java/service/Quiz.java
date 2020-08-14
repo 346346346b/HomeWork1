@@ -20,7 +20,7 @@ public class Quiz {
         quizSendInst.sendMessage("Введите фамилию");
         String secondName = scanner.next();
 
-        TreeMap<String,String> questionAndAnswer = (TreeMap<String, String>) readQuestionsInst.readQuestions();
+        TreeMap<String,String> questionAndAnswer = readQuestionsInst.readQuestions();
         int i = 1;
         int trueAnswer = 0;
         for (Map.Entry<String, String> e : questionAndAnswer.entrySet()) {

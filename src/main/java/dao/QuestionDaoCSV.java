@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.TreeMap;
 
-public class ReadQuestionsCSV implements ReadQuestions {
+public class QuestionDaoCSV implements QuestionDao {
     public TreeMap readQuestions() throws IOException {
         TreeMap<String, String> questionAndAnswer = new TreeMap<>();
         CSVReader reader = new CSVReader(new FileReader("src\\main\\resources\\question.csv"), ';', '"', 1);

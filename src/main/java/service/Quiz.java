@@ -1,38 +1,46 @@
 package service;
 
-import dao.ReadQuestions;
-import org.springframework.stereotype.Component;
+import dao.QuestionDao;
 
 import java.io.IOException;
 import java.util.Map;
-import java.util.Scanner;
 import java.util.TreeMap;
 
-@Component
 public class Quiz {
 
-    public void startQuiz(ReadQuestions readQuestionsInst, SendMessage quizSendInst, AskQuestion askQuestionInst, Scanner scanner) throws IOException {
+    private final InformationStreamService inf;
+    private final QuestionDao dao;
+    private final QuestionService question;
+
+    public Quiz(InformationStreamService inf, QuestionDao dao, QuestionService question) {
+        this.inf = inf;
+        this.dao = dao;
+        this.question = question;
+    }
+
+    public void startQuiz() throws IOException {
+
         String questionText;
         String answerText;
 
-        quizSendInst.sendMessage("Введите имя");
-        String firstName = scanner.next();
-        quizSendInst.sendMessage("Введите фамилию");
-        String secondName = scanner.next();
+        inf.output("Введите имя");
+        String firstName = inf.input();
+        inf.output("Введите фамилию");
+        String secondName = inf.input();
 
-        TreeMap<String,String> questionAndAnswer = readQuestionsInst.readQuestions();
+        TreeMap<String,String> questionAndAnswer = dao.readQuestions();
         int i = 1;
         int trueAnswer = 0;
         for (Map.Entry<String, String> e : questionAndAnswer.entrySet()) {
             questionText = e.getKey();
             answerText = e.getValue();
 
-            quizSendInst.sendMessage("");
-            quizSendInst.sendMessage("Вопрос номер: " + i);
-            trueAnswer = trueAnswer + askQuestionInst.askQuestion(scanner, questionText, answerText);
+            inf.output("");
+            inf.output("Вопрос номер: " + i);
+            trueAnswer = trueAnswer + question.askQuestion(questionText, answerText);
             i++;
         }
-        quizSendInst.sendMessage(firstName + " " + secondName + " тест окончен. Правильных ответов " + trueAnswer + " из " + questionAndAnswer.size());
+        inf.output(firstName + " " + secondName + " тест окончен. Правильных ответов " + trueAnswer + " из " + questionAndAnswer.size());
     }
 
 }

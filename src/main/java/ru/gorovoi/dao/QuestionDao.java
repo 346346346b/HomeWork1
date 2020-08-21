@@ -1,4 +1,4 @@
-package dao;
+package ru.gorovoi.dao;
 
 import java.io.IOException;
 import java.util.TreeMap;

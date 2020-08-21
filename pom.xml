@@ -20,13 +20,12 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <version>5.2.5.RELEASE</version>
-            <scope>compile</scope>
         </dependency>
+
         <dependency>
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
             <version>3.8.9</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.opencsv</groupId>

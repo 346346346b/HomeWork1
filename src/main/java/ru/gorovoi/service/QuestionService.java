@@ -1,4 +1,4 @@
-package service;
+package ru.gorovoi.service;
 
 public interface QuestionService {
 

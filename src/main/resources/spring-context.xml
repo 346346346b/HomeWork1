@@ -15,8 +15,8 @@
 
     <bean id="quiz" class = "service.Quiz">
         <constructor-arg name="questionDao" ref="questionDao"/>
-        <constructor-arg name="infoStream" ref="informationStreamService"/>
-        <constructor-arg name="askQuestion" ref="questionService"/>
+        <constructor-arg name="infoStreamService" ref="informationStreamService"/>
+        <constructor-arg name="questionService" ref="questionService"/>
     </bean>
 
 </beans>

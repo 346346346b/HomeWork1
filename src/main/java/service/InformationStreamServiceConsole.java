@@ -11,7 +11,6 @@ public class InformationStreamServiceConsole implements InformationStreamService
     @Override
     public String input() {
         Scanner scannerExam = new Scanner(System.in);
-        String string = scannerExam.next();
-        return string;
+        return scannerExam.nextLine();
     }
 }

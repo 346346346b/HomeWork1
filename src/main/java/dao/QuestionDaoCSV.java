@@ -8,12 +8,12 @@ import java.util.Arrays;
 import java.util.TreeMap;
 
 public class QuestionDaoCSV implements QuestionDao {
-    public TreeMap readQuestions() throws IOException {
+    public TreeMap<String,String> readQuestions() throws IOException {
         TreeMap<String, String> questionAndAnswer = new TreeMap<>();
         CSVReader reader = new CSVReader(new FileReader("src\\main\\resources\\question.csv"), ';', '"', 1);
         String[] nextLine;
         while ((nextLine = reader.readNext()) != null) {
-            String[] string = Arrays.toString(nextLine).substring(1).replaceAll("]", "").split(",");
+            String[] string = Arrays.toString(nextLine).replaceAll("[\\[\\]]", "").split(",");
             questionAndAnswer.put(string[0].trim(), string[1].trim());
         }
         return questionAndAnswer;
